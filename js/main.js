@@ -168,10 +168,11 @@ function initTypewriter() {
   if (!typewriterElement) return;
 
   const roles = [
-    'Senior Full-Stack Engineer',
-    'Cloud & Distributed Systems Architect',
-    'UI/UX Craftsman & Creative Coder',
-    'Open-Source Contributor'
+    'AI & Machine Learning Student',
+    'Deep Learning & Neural Networks Enthusiast',
+    'Computer Vision & NLP Researcher',
+    'PyTorch & Generative AI Builder',
+    'Open-Source & Kaggle Competitor'
   ];
 
   let roleIndex = 0;
@@ -222,7 +223,7 @@ function initNumberCounters() {
       if (entry.isIntersecting && !animated) {
         animated = true;
         statNumbers.forEach(stat => {
-          const target = parseInt(stat.getAttribute('data-target'), 10);
+          const target = parseFloat(stat.getAttribute('data-target'));
           const suffix = stat.getAttribute('data-suffix') || '';
           let count = 0;
           const duration = 1800; // ms
@@ -233,10 +234,10 @@ function initNumberCounters() {
           const timer = setInterval(() => {
             count += increment;
             if (count >= target) {
-              stat.textContent = target + suffix;
+              stat.textContent = (Number.isInteger(target) ? target : target.toFixed(1)) + suffix;
               clearInterval(timer);
             } else {
-              stat.textContent = Math.floor(count) + suffix;
+              stat.textContent = (Number.isInteger(target) ? Math.floor(count) : count.toFixed(1)) + suffix;
             }
           }, stepTime);
         });
@@ -279,68 +280,68 @@ function initAboutTabs() {
 // Project metadata for the detailed case study modal
 const projectsData = {
   project1: {
-    title: 'Aurora SaaS Intelligence Platform',
-    category: 'Full-Stack / Cloud',
-    image: 'assets/images/project1.jpg',
-    description: 'An enterprise-tier real-time SaaS analytics dashboard with high-throughput streaming metrics, cohort retention analysis, and automated revenue trend forecasting. Designed for scale and instant visual comprehension.',
-    challenge: 'Existing legacy analytics suffered from 10+ second query latency across millions of data points and high cloud compute expenditures.',
-    solution: 'Engineered an asynchronous pipeline using Go, Redis, and TimescaleDB with WebSockets push notifications. Reduced p99 dashboard load time to under 120ms.',
+    title: 'NeuroVision: Edge Object Detection & Instance Segmentation',
+    category: 'Computer Vision / PyTorch',
+    image: 'assets/images/project1_cv.svg',
+    description: 'A custom-trained deep learning vision pipeline integrating YOLOv8-Large and TensorRT quantization for high-speed multi-class object detection and instance segmentation across challenging dynamic video streams.',
+    challenge: 'Achieving sub-20ms low-latency inference on embedded/edge hardware while maintaining high mean Average Precision (mAP) under severe occlusions and low-light conditions.',
+    solution: 'Designed a custom mosaic augmentation training regimen in PyTorch, followed by FP16 quantization with NVIDIA TensorRT and ONNX Runtime. Deployed an interactive Streamlit and OpenCV web dashboard.',
     metrics: [
-      { value: '120ms', label: 'Average Query Latency' },
-      { value: '78K+', label: 'Active Monthly Orgs' },
-      { value: '99.99%', label: 'Uptime SLA' }
+      { value: '94.2%', label: 'mAP@0.5 IoU Score' },
+      { value: '45.2 FPS', label: 'Real-Time Edge Throughput' },
+      { value: '18ms', label: 'Inference Latency' }
     ],
-    tech: ['React 18', 'TypeScript', 'Node.js', 'TimescaleDB', 'Redis', 'Tailwind/CSS', 'Docker'],
-    liveUrl: '#',
-    githubUrl: '#'
+    tech: ['PyTorch', 'YOLOv8', 'OpenCV', 'TensorRT', 'ONNX', 'FastAPI', 'Streamlit'],
+    liveUrl: 'https://github.com/Thejas992005',
+    githubUrl: 'https://github.com/Thejas992005'
   },
   project2: {
-    title: 'Synapse AI Creative Workspace',
-    category: 'AI / Full-Stack',
-    image: 'assets/images/project2.jpg',
-    description: 'A node-based generative AI platform that empowers product teams to orchestrate multi-modal LLM chains, automated image workflows, and prompt engineering pipelines in a unified visual canvas.',
-    challenge: 'Managing non-deterministic AI agent workflows with multi-step validation and stream rendering without blocking client interfaces.',
-    solution: 'Built a lightweight custom canvas node engine using HTML5 Canvas & WebGL with streaming server-sent events (SSE) back to Python FastAPI workers.',
+    title: 'DocuMind AI: Multimodal Hybrid RAG & Knowledge Agent',
+    category: 'NLP & LLMs / Generative AI',
+    image: 'assets/images/project2_rag.svg',
+    description: 'An advanced Retrieval-Augmented Generation (RAG) assistant that parses multi-format academic papers and technical documentation with hybrid sparse-dense semantic search, cross-encoder re-ranking, and citation validation.',
+    challenge: 'Mitigating LLM hallucination on dense scientific equations and tables while reducing retrieval latency over multi-thousand page collections.',
+    solution: 'Constructed an asynchronous chunking pipeline using BAAI/bge-large embeddings, Chroma vector store, BM25 hybrid fusion, and Cohere cross-encoder re-ranking connected to LLaMA-3-8B via vLLM.',
     metrics: [
-      { value: '3.5x', label: 'Workflow Acceleration' },
-      { value: '250K+', label: 'Pipelines Run' },
-      { value: '4.9/5', label: 'User Satisfaction' }
+      { value: '92.8%', label: 'Context Retrieval Precision' },
+      { value: '0.98', label: 'RAGAS Faithfulness' },
+      { value: '< 1.4s', label: 'End-to-End Response Time' }
     ],
-    tech: ['Next.js', 'FastAPI', 'Python', 'OpenAI API', 'LangChain', 'WebGL', 'PostgreSQL'],
-    liveUrl: '#',
-    githubUrl: '#'
+    tech: ['LangChain', 'LlamaIndex', 'LLaMA-3', 'ChromaDB', 'FastAPI', 'Python', 'React'],
+    liveUrl: 'https://github.com/Thejas992005',
+    githubUrl: 'https://github.com/Thejas992005'
   },
   project3: {
-    title: 'PayVault Global Multi-Currency Gateway',
-    category: 'FinTech / Frontend',
-    image: 'assets/images/project3.svg',
-    description: 'Next-generation cross-border financial dashboard supporting instantaneous multi-currency conversion, cryptographic escrow validation, and automated compliance auditing for corporate treasuries.',
-    challenge: 'Ensuring zero-downtime ledger consistency during volatile currency fluctuations across 48 fiat & cryptocurrency exchange corridors.',
-    solution: 'Designed an event-sourced ledger architecture with distributed locking in Redis and micro-frontends ensuring isolated failure domains.',
+    title: 'CardioRisk: 12-Lead ECG Neural Classifier with Explainable AI',
+    category: 'Deep Learning / Biomedical AI',
+    image: 'assets/images/project3_ecg.svg',
+    description: 'An end-to-end deep neural network that classifies multi-lead electrocardiogram (ECG) waveforms to identify cardiac arrhythmias with visual explanation heatmaps powered by 1D Grad-CAM.',
+    challenge: 'Handling severe class imbalance in physiological signals (e.g. rare ventricular ectopic beats) and providing interpretable diagnostics for clinicians.',
+    solution: 'Engineered a 4-layer 1D CNN with Bidirectional LSTM and Attention mechanisms trained on 43,000+ patient records from PhysioNet/Computing in Cardiology Challenge. Implemented Grad-CAM to highlight rhythm anomalies.',
     metrics: [
-      { value: '$14.8M', label: 'Settled Monthly Vol' },
-      { value: '< 2s', label: 'Settlement Time' },
-      { value: 'PCI-DSS', label: 'Certified Level 1' }
+      { value: '97.8%', label: 'Classification Accuracy' },
+      { value: '0.96', label: 'Weighted F1-Score' },
+      { value: '0.984', label: 'AUROC Multi-Class' }
     ],
-    tech: ['Vue 3', 'TypeScript', 'Golang', 'PostgreSQL', 'Kafka', 'Docker', 'Vault'],
-    liveUrl: '#',
-    githubUrl: '#'
+    tech: ['TensorFlow 2', 'Keras', '1D-CNN + BiLSTM', 'Scikit-Learn', 'PhysioNet', 'Gradio', 'Pandas'],
+    liveUrl: 'https://github.com/Thejas992005',
+    githubUrl: 'https://github.com/Thejas992005'
   },
   project4: {
-    title: 'CloudMesh Kubernetes Topology Monitor',
-    category: 'Cloud / DevOps',
-    image: 'assets/images/project4.svg',
-    description: 'An observability and eBPF-powered service mesh monitor that visualizes distributed microservice network latency, pod health, and automated Canary deployments in real-time.',
-    challenge: 'Rendering high-density live telemetry topology graphs with 500+ interconnected services without UI frame drops or CPU throttling.',
-    solution: 'Implemented GPU-accelerated force-directed graph layout algorithms in WebGL paired with Prometheus metrics scraping.',
+    title: 'NeuroStyle: Latent Diffusion & Perceptual Style Transfer',
+    category: 'Generative Vision & Deep Learning',
+    image: 'assets/images/project4_diffusion.svg',
+    description: 'An interactive generative visual studio combining VGG19 Gram-matrix perceptual loss optimization with fine-tuned Latent Diffusion (LoRA) models for artistic neural synthesis and semantic image editing.',
+    challenge: 'Balancing spatial content structure retention with high-frequency artistic texture synthesis without artifact degradation.',
+    solution: 'Implemented custom multi-layer perceptual loss in PyTorch alongside low-rank adaptation (LoRA rank=8) fine-tuning on Stable Diffusion UNet layers, exposed via a fast WebGL and REST interface.',
     metrics: [
-      { value: '60 FPS', label: 'Rendering Rate' },
-      { value: '36 Services', label: 'Live Supervised' },
-      { value: '0ms', label: 'Log Parsing Lag' }
+      { value: '12.4', label: 'Frechet Inception Dist (FID)' },
+      { value: '1.8s', label: 'Synthesis Time / Image' },
+      { value: '1024px', label: 'High-Res Output' }
     ],
-    tech: ['React', 'D3.js', 'Go', 'Kubernetes', 'eBPF', 'Prometheus', 'Envoy'],
-    liveUrl: '#',
-    githubUrl: '#'
+    tech: ['PyTorch', 'Diffusers', 'Stable Diffusion', 'LoRA', 'ControlNet', 'FastAPI', 'Tailwind'],
+    liveUrl: 'https://github.com/Thejas992005',
+    githubUrl: 'https://github.com/Thejas992005'
   }
 };
 

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a1a"/>
+      <stop offset="50%" stop-color="#180e2e"/>
+      <stop offset="100%" stop-color="#070714"/>
+    </linearGradient>
+    <linearGradient id="multiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="glow4" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad4)"/>
+
+  <!-- Top Status Bar -->
+  <rect x="40" y="25" width="720" height="45" rx="8" fill="rgba(24, 14, 46, 0.85)" stroke="rgba(236, 72, 153, 0.3)" stroke-width="1"/>
+  <circle cx="65" cy="47" r="5" fill="#ec4899" filter="url(#glow4)"/>
+  <text x="82" y="52" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="600">NeuroStyle • LATENT DIFFUSION &amp; PERCEPTUAL STYLE TRANSFER</text>
+  <text x="560" y="52" fill="#ec4899" font-family="'JetBrains Mono', monospace" font-size="12">UNET • VGG19 LOSS</text>
+
+  <!-- Left: Content & Style Source Image Cards -->
+  <g transform="translate(45, 95)">
+    <!-- Content Source -->
+    <rect width="160" height="115" rx="8" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+    <text x="12" y="22" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">CONTENT SOURCE (X)</text>
+    <circle cx="80" cy="65" r="28" fill="none" stroke="#38bdf8" stroke-width="2"/>
+    <polygon points="80,45 100,85 60,85" fill="rgba(56, 189, 248, 0.3)"/>
+    <text x="12" y="105" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9">Gram Loss: conv4_2</text>
+
+    <!-- Style Source -->
+    <g transform="translate(0, 135)">
+      <rect width="160" height="115" rx="8" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+      <text x="12" y="22" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">STYLE REFERENCE (A)</text>
+      <!-- Stylized swirls -->
+      <path d="M40 75 Q 80 35, 120 75 T 140 60" fill="none" stroke="#f43f5e" stroke-width="3"/>
+      <path d="M30 60 Q 70 85, 110 50" fill="none" stroke="#fb923c" stroke-width="2.5"/>
+      <text x="12" y="105" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="9">Style Loss: conv1_1..5_1</text>
+    </g>
+  </g>
+
+  <!-- Center: Diffusion UNet Denoising Steps / Latent Space -->
+  <g transform="translate(230, 95)">
+    <rect width="320" height="250" rx="10" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(168, 85, 247, 0.3)" stroke-width="1"/>
+    <text x="15" y="25" fill="#a855f7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">LATENT DENOISING TRAJECTORY (T=50)</text>
+
+    <!-- Step Progression -->
+    <!-- Step t=50 (Pure Gaussian Noise) -->
+    <g transform="translate(15, 45)">
+      <rect width="80" height="80" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+      <!-- Noise pattern -->
+      <circle cx="20" cy="20" r="1.5" fill="#818cf8"/>
+      <circle cx="40" cy="30" r="1.5" fill="#818cf8"/>
+      <circle cx="60" cy="25" r="1.5" fill="#818cf8"/>
+      <circle cx="30" cy="55" r="1.5" fill="#818cf8"/>
+      <circle cx="55" cy="65" r="1.5" fill="#818cf8"/>
+      <text x="10" y="100" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">t=50 (Noise)</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M105 85 L120 85" stroke="#a855f7" stroke-width="2"/>
+
+    <!-- Step t=25 (Emerging Feature Layout) -->
+    <g transform="translate(125, 45)">
+      <rect width="80" height="80" rx="6" fill="#2e1065" stroke="#8b5cf6" stroke-width="1"/>
+      <circle cx="40" cy="40" r="18" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="3,3"/>
+      <path d="M20 50 Q 40 25, 60 50" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <text x="10" y="100" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">t=25 (Layout)</text>
+    </g>
+
+    <!-- Arrow -->
+    <path d="M215 85 L230 85" stroke="#ec4899" stroke-width="2"/>
+
+    <!-- Step t=0 (High Fidelity Output) -->
+    <g transform="translate(235, 45)">
+      <rect width="70" height="80" rx="6" fill="url(#multiGrad)" stroke="#ec4899" stroke-width="1.5" filter="url(#glow4)"/>
+      <circle cx="35" cy="40" r="15" fill="none" stroke="#ffffff" stroke-width="2"/>
+      <text x="8" y="100" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">t=0 (Synthesized)</text>
+    </g>
+
+    <!-- LoRA Attention Cross-Weights -->
+    <rect x="15" y="145" width="290" height="85" rx="6" fill="rgba(30, 41, 59, 0.6)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <text x="25" y="165" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">LoRA Rank-8 Attention Adaptation</text>
+    
+    <rect x="25" y="178" width="120" height="12" rx="4" fill="#3b82f6"/>
+    <text x="32" y="187" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="8">Content Fidelity: 94%</text>
+
+    <rect x="155" y="178" width="140" height="12" rx="4" fill="#ec4899"/>
+    <text x="162" y="187" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="8">Style Consistency: 91%</text>
+
+    <text x="25" y="215" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">CLIP ViT-L/14 Semantic Guidance</text>
+  </g>
+
+  <!-- Right: Generated Art Matrix Preview -->
+  <g transform="translate(575, 95)">
+    <rect width="180" height="250" rx="10" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(236, 72, 153, 0.3)" stroke-width="1"/>
+    <text x="15" y="25" fill="#ec4899" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">SYNTHESIS OUTPUT</text>
+
+    <!-- Canvas Preview Box -->
+    <rect x="15" y="45" width="150" height="135" rx="6" fill="url(#multiGrad)" opacity="0.85"/>
+    <circle cx="90" cy="110" r="35" fill="none" stroke="#ffffff" stroke-width="3" filter="url(#glow4)"/>
+    <polygon points="90,80 120,135 60,135" fill="rgba(255, 255, 255, 0.3)"/>
+
+    <rect x="15" y="195" width="150" height="35" rx="4" fill="rgba(236, 72, 153, 0.15)" stroke="#ec4899" stroke-width="1"/>
+    <text x="25" y="212" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700">Resolution: 1024x1024</text>
+    <text x="25" y="224" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="8">Inference: 1.8s / image</text>
+  </g>
+
+  <!-- Bottom Metric Bar -->
+  <rect x="40" y="380" width="720" height="40" rx="6" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="55" y="405" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="12">Framework: PyTorch • Diffusers • ControlNet • VGG19 Perceptual Loss • CUDA FP16</text>
+  <text x="630" y="405" fill="#ec4899" font-family="'JetBrains Mono', monospace" font-size="12">FID SCORE: 12.4</text>
+</svg>
